@@ -1,8 +1,11 @@
 <template>
   <div class="left-menu">
     <ul>
+      <li>
+        <button type="button" @click="onClick()">All</button>
+      </li>
       <li v-for="t in sortedTypes">
-        <button type="button" v-text="t"></button>
+        <button type="button" v-text="t" @click="onClick(t)"></button>
       </li>
     </ul>
   </div>
@@ -20,9 +23,11 @@
     },
     mounted () {
       this.types = this.getTypes(Games)
-      console.info(this.types)
     },
     methods: {
+      onClick (val) {
+        this.$emit('category-updated', val)
+      },
       getTypes (gamesArr) {
         return gamesArr
           .map(v => {

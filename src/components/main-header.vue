@@ -5,14 +5,15 @@
       <li>
         <input type="search"
                v-model="search"
+               @input="updateSearch"
         />
       </li>
     </ul>
-    <ul class="header__menu--right header-menu">
-      <li>
-        <button type="button" class="header-menu__button">Most popular</button>
-      </li>
-    </ul>
+    <!--<ul class="header__menu&#45;&#45;right header-menu">-->
+    <!--<li>-->
+    <!--<button type="button" class="header-menu__button">Most popular</button>-->
+    <!--</li>-->
+    <!--</ul>-->
   </div>
 </template>
 
@@ -22,6 +23,11 @@
     data () {
       return {
         search: ''
+      }
+    },
+    methods: {
+      updateSearch () {
+        this.$emit('search-updated', this.search)
       }
     }
   }
