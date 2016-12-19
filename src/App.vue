@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <main-header></main-header>
-    <games-list></games-list>
     <left-menu></left-menu>
+    <games-list></games-list>
   </div>
 </template>
 

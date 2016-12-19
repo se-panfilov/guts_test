@@ -1,8 +1,8 @@
 <template>
   <div class="left-menu">
     <ul>
-      <li v-for="t in types">
-      <button type="button" v-text="t"></button>
+      <li v-for="t in sortedTypes">
+        <button type="button" v-text="t"></button>
       </li>
     </ul>
   </div>
@@ -31,6 +31,15 @@
           .filter((item, i, arr) => {
             return arr.indexOf(item) === i
           })
+      }
+    },
+    computed: {
+      sortedTypes () {
+        return this.types.sort((a, b) => {
+          if (a.toLowerCase() > b.toLowerCase()) return 1
+          if (a.toLowerCase() < b.toLowerCase()) return -1
+          return 0
+        })
       }
     },
     components: {
