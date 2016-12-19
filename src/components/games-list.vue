@@ -34,9 +34,15 @@
     },
     computed: {
       filteredGames () {
-        return this.games // TODO (S.Panfilov)take care of empty fields
-          .filter(v => v.gameType === this.category)
-          .filter(v => v.name.toLowerCase().indexOf(this.text.toLowerCase()) !== -1)
+        return this.games
+          .filter(v => {
+            if (!this.category) return true
+            return v.gameType === this.category
+          })
+          .filter(v => {
+            if (!this.text && this.text.length === 0) return true
+            return v.name.toLowerCase().indexOf(this.text.toLowerCase()) !== -1
+          })
       }
     },
     components: {
