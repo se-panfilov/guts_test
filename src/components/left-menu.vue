@@ -1,11 +1,11 @@
 <template>
-  <div class="left-menu">
-    <ul>
-      <li>
-        <button type="button" @click="onClick()">All</button>
+  <div class="menu">
+    <ul class="menu__container">
+      <li class="menu__item">
+        <button type="button" @click="onClick()" class="menu-item__button">All</button>
       </li>
-      <li v-for="t in sortedTypes">
-        <button type="button" v-text="t" @click="onClick(t)"></button>
+      <li class="menu__item" v-for="t in sortedTypes">
+        <button type="button" v-text="t" @click="onClick(t)" class="menu-item__button"></button>
       </li>
     </ul>
   </div>
@@ -53,6 +53,24 @@
   }
 </script>
 
-<style scoped>
+<style lang="stylus" rel="stylesheet/stylus" scoped>
+  .menu
+    &__container
+      display block
+      margin 0
+      padding 0
+
+    &__item
+        list-style none
+
+    &-item__button
+      border 0
+      background none
+      font-size 0.8em
+      cursor pointer
+      &:hover, &:active, &:focus
+        color red
+        outline none
+
 
 </style>

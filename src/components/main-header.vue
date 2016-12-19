@@ -1,19 +1,15 @@
 <template>
   <div class="header">
     <h1 class="header__title">Guts</h1>
-    <ul class="header__menu--left">
-      <li>
+    <ul class="header__menu">
+      <li class="header-menu__item">
         <input type="search"
+               class="header-menu__input"
                v-model="search"
                @input="updateSearch"
         />
       </li>
     </ul>
-    <!--<ul class="header__menu&#45;&#45;right header-menu">-->
-    <!--<li>-->
-    <!--<button type="button" class="header-menu__button">Most popular</button>-->
-    <!--</li>-->
-    <!--</ul>-->
   </div>
 </template>
 
@@ -33,6 +29,20 @@
   }
 </script>
 
-<style scoped>
+<style lang="stylus" rel="stylesheet/stylus" scoped>
+  .header
+    &__title
+      margin 0
+      padding 0
+      display inline-block
+    &__menu
+      display inline-block
+      list-style none
+      margin 0
+      padding 0
+
+  /*.header-menu*/
+    /*&__input*/
+      /*padding 15px*/
 
 </style>

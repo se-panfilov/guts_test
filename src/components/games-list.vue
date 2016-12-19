@@ -1,9 +1,9 @@
 <template>
   <div class='main-list'>
     <ul class='main-list__container'>
-      <li v-for='g in filteredGames'>
-        <img :src='getSrc(g.gameId)' alt='g.name'>
-        <span v-text="g.name"></span>
+      <li v-for='g in filteredGames' class="main-list__item">
+        <img :src='getSrc(g.gameId)' alt='g.name' class="main-list__img">
+        <!--<span v-text="g.name" class="main-list__name"></span>-->
       </li>
     </ul>
   </div>
@@ -51,6 +51,23 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="stylus" rel="stylesheet/stylus" scoped>
+  .main-list
+    &__container
+      display flex
+      flex-direction row
+      flex-wrap wrap
+      list-style none
+      margin 0
+      padding 0
+    &__item
+      padding 3px 5px
+      /*display block*/
+      /*float left*/
+    &__img
+      border-radius 3px
+    &__name
+      display block
+      color red
+      text-align center
 </style>
