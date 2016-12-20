@@ -77,6 +77,7 @@
       width 100%
       text-align left
       background-color bg_color
+      transition background-color 0.3s ease
       &:hover, &:active, &:focus
         color black
         outline none
