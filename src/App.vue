@@ -5,9 +5,15 @@
       <div class="row">
         <div class="menu">
           <h4>Category</h4>
-          <category-menu v-on:category-updated="setCategoryFilter"></category-menu>
+          <items-menu
+            v-on:items-updated="setCategoryFilter"
+            field-name="gameType"
+          ></items-menu>
           <h4>Vendor</h4>
-          <vendor-menu v-on:vendor-updated="setVendorFilter" class="menu"></vendor-menu>
+          <items-menu
+            v-on:items-updated="setVendorFilter"
+            field-name="vendor"
+          ></items-menu>
         </div>
         <games-list
           :text="text"
@@ -22,8 +28,7 @@
 
 <script>
   import MainHeader from './components/main-header'
-  import CategoryMenu from './components/category-menu'
-  import VendorMenu from './components/vendor-menu'
+  import ItemsMenu from './components/items-menu'
   import GamesList from './components/games-list'
 
   export default {
@@ -48,8 +53,7 @@
     },
     components: {
       MainHeader,
-      CategoryMenu,
-      VendorMenu,
+      ItemsMenu,
       GamesList
     }
   }

@@ -4,7 +4,7 @@
       <li class="menu__item">
         <button type="button" @click="onClick()" class="menu-item__button">All</button>
       </li>
-      <li class="menu__item" v-for="t in sortedTypes">
+      <li class="menu__item" v-for="t in sortedItems">
         <button type="button" v-text="t" @click="onClick(t)" class="menu-item__button"></button>
       </li>
     </ul>
@@ -15,23 +15,28 @@
   import Games from './games'
 
   export default {
-    name: 'LeftMenu',
+    name: 'ItemsMenu',
     data () {
       return {
-        types: []
+        items: []
+      }
+    },
+    props: {
+      fieldName: {
+        type: String
       }
     },
     mounted () {
-      this.types = this.getTypes(Games)
+      this.items = this.getItems(Games)
     },
     methods: {
       onClick (val) {
-        this.$emit('category-updated', val)
+        this.$emit('items-updated', val)
       },
-      getTypes (gamesArr) {
+      getItems (gamesArr) {
         return gamesArr
           .map(v => {
-            return v.gameType
+            return v[this.fieldName]
           })
           .filter((item, i, arr) => {
             return arr.indexOf(item) === i
@@ -39,8 +44,8 @@
       }
     },
     computed: {
-      sortedTypes () {
-        return this.types.sort((a, b) => {
+      sortedItems () {
+        return this.items.sort((a, b) => {
           if (a.toLowerCase() > b.toLowerCase()) return 1
           if (a.toLowerCase() < b.toLowerCase()) return -1
           return 0
