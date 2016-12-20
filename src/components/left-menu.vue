@@ -54,11 +54,15 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  text_color = #464646
+  bg_color = #FFF
+
   .menu
     &__container
       display block
       margin 0
-      padding 0
+      padding 0 15px
+      height 100%
 
     &__item
         list-style none
@@ -68,9 +72,15 @@
       background none
       font-size 0.8em
       cursor pointer
+      color text_color
+      font-weight 300
+      width 100%
+      text-align left
+      background-color bg_color
       &:hover, &:active, &:focus
-        color red
+        color black
         outline none
+        background-color darken(bg_color, 5)
 
 
 </style>

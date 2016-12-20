@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     <main-header v-on:search-updated="setTextFilter" class="header"></main-header>
-    <div class="row">
-      <left-menu v-on:category-updated="setTypeFilter" class="menu"></left-menu>
-      <games-list
-        :text="text"
-        :category="category"
-        class="list"
-      ></games-list>
-    </div>
+    <transition name="in-out-translate-fade" mode="out-in" appear>
+      <div class="row">
+        <left-menu v-on:category-updated="setTypeFilter" class="menu"></left-menu>
+        <games-list
+          :text="text"
+          :category="category"
+          class="list"
+        ></games-list>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -49,16 +51,27 @@
     display flex
     flex-direction row
     flex-wrap nowrap
-    justify-content center
-    padding 0 25px
+    justify-content space-around
+    padding 15px
+    background #FFF
     .menu
-      /*flex-basis 300px*/
-      min-width 160px
-      flex-grow 1
-      flex-shrink 2
+      flex 0 0 150px
     .list
       flex-grow 2
       flex-shrink 1
+
+  .in-out-translate-fade-enter-active, .in-out-translate-fade-leave-active
+    transition all 0.5s
+
+  .in-out-translate-fade-enter, .in-out-translate-fade-leave-active
+    opacity 0
+
+  .in-out-translate-fade-enter
+    transform translateX(31px)
+
+  .in-out-translate-fade-leave-active
+    transform translateX(-31px)
+
 </style>
 
 <style lang="stylus" rel="stylesheet/stylus">
@@ -68,8 +81,8 @@
     height 100%
 
   body
-    background-color #F7F7F7
-    color main_text_color
+    background-color #FFF
+    color #3c3c3c
     font-family 'Roboto', sans-serif
     font-weight 500
     font-size 16px
@@ -77,9 +90,9 @@
       font-family 'Roboto', sans-serif
       font-weight 500
 
-    #app
-      padding-left 15px
-      padding-right 15px
+    //#app
+      //padding-left 15px
+      //padding-right 15px
 
   input[type="search"]
     -moz-appearance textfield

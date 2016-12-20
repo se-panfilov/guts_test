@@ -7,6 +7,7 @@
                class="header-menu__input"
                v-model="search"
                @input="updateSearch"
+               placeholder="Search"
         />
       </li>
     </ul>
@@ -31,18 +32,27 @@
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   .header
+    background-color #F7F7F7
     &__title
       margin 0
-      padding 0 25px
+      padding 5px 25px
       display inline-block
+      width 120px
+      text-align center
     &__menu
       display inline-block
+      vertical-align super
       list-style none
       margin 0
-      padding 0
+      padding 5px
 
-  /*.header-menu*/
-    /*&__input*/
-      /*padding 15px*/
-
+  .header-menu
+    &__input
+      height 34px
+      padding 6px 12px
+      font-size 14px
+      line-height 1.42857143
+      border-radius 4px
+      border 1px solid #ccc
+      font-weight 300
 </style>
