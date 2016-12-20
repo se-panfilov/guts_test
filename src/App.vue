@@ -3,10 +3,16 @@
     <main-header v-on:search-updated="setTextFilter" class="header"></main-header>
     <transition name="in-out-translate-fade" mode="out-in" appear>
       <div class="row">
-        <left-menu v-on:category-updated="setTypeFilter" class="menu"></left-menu>
+        <div class="menu">
+          <h4>Category</h4>
+          <category-menu v-on:category-updated="setCategoryFilter"></category-menu>
+          <h4>Vendor</h4>
+          <vendor-menu v-on:vendor-updated="setVendorFilter" class="menu"></vendor-menu>
+        </div>
         <games-list
           :text="text"
           :category="category"
+          :vendor="vendor"
           class="list"
         ></games-list>
       </div>
@@ -16,7 +22,8 @@
 
 <script>
   import MainHeader from './components/main-header'
-  import LeftMenu from './components/left-menu'
+  import CategoryMenu from './components/category-menu'
+  import VendorMenu from './components/vendor-menu'
   import GamesList from './components/games-list'
 
   export default {
@@ -24,20 +31,25 @@
     data () {
       return {
         text: '',
-        category: null
+        category: null,
+        vendor: null
       }
     },
     methods: {
       setTextFilter (val) {
         this.text = val
       },
-      setTypeFilter (val) {
+      setCategoryFilter (val) {
         this.category = val
+      },
+      setVendorFilter (val) {
+        this.vendor = val
       }
     },
     components: {
       MainHeader,
-      LeftMenu,
+      CategoryMenu,
+      VendorMenu,
       GamesList
     }
   }
@@ -90,9 +102,9 @@
       font-family 'Roboto', sans-serif
       font-weight 500
 
-    //#app
-      //padding-left 15px
-      //padding-right 15px
+  //#app
+  //padding-left 15px
+  //padding-right 15px
 
   input[type="search"]
     -moz-appearance textfield

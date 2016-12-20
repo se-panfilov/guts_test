@@ -33,6 +33,9 @@
       },
       category: {
         type: String
+      },
+      vendor: {
+        type: String
       }
     },
     methods: {
@@ -51,6 +54,10 @@
           .filter(v => {
             if (!this.category) return true
             return v.gameType === this.category
+          })
+          .filter(v => {
+            if (!this.vendor) return true
+            return v.vendor === this.vendor
           })
           .filter(v => {
             if (!this.text && this.text.length === 0) return true
