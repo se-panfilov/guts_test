@@ -33,7 +33,7 @@
   .header
     &__title
       margin 0
-      padding 0
+      padding 0 25px
       display inline-block
     &__menu
       display inline-block
